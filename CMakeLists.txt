@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 3.18)
+project(bplus-tree-file-structure CXX)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CXX_EXTENSIONS OFF)
+set_property(GLOBAL PROPERTY USE_FOLDERS TRUE)
+
+if ($<CONFIG:Release>)
+    if (MSVC)
+        add_compile_options(/02)
+    elseif(UNIX)
+        add_compile_options(-02)
+    endif()
+endif()
+
+add_subdirectory(3rdParty)
+add_subdirectory(src)
