@@ -37,7 +37,7 @@ if args.open_code:
                    stderr=subprocess.STDOUT, shell=True)
 
 os.chdir(build_dir_path)
-cmake_build_command = ['cmake', build_dir_path]
+cmake_build_command = ['cmake', repository_path]
 
 if args.run_cmake:
     subprocess.check_call(cmake_build_command,
@@ -45,10 +45,16 @@ if args.run_cmake:
 
 if args.open_vs:
     os.startfile('bplus-tree-file-structure.sln')
+
+configuration = 'Release'
+
 if args.build_release:
     subprocess.check_call(['cmake', '--build', '.', '--config',
                            'Release', '-j'], stderr=subprocess.STDOUT, shell=True)
 if args.build_debug:
+    configuration = 'Debug'
     subprocess.check_call(['cmake', '--build', '.', '--config',
                            'Debug', '-j'], stderr=subprocess.STDOUT, shell=True)
+if args.run_tests:
+    subprocess.check_call(['ctest', '-C', configuration], stderr=subprocess.STDOUT, shell=True)
 os.chdir(repository_path)
