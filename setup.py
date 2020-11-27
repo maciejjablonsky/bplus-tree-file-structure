@@ -44,7 +44,7 @@ if args.run_cmake:
                           stderr=subprocess.STDOUT, shell=True)
 
 if args.open_vs:
-    os.startfile('polyphase_sort.sln')
+    os.startfile('bplus-tree-file-structure.sln')
 if args.build_release:
     subprocess.check_call(['cmake', '--build', '.', '--config',
                            'Release', '-j'], stderr=subprocess.STDOUT, shell=True)
