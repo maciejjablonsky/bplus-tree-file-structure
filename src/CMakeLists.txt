@@ -1,1 +1,2 @@
+add_subdirectory(orders-interpreter)
 add_subdirectory(client)
